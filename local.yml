@@ -1,0 +1,11 @@
+longpoll: true
+
+mongo_uri: mongodb://localhost:27017/funt-bot
+
+server:
+  application_connectors:
+    - type: http
+      port: 8080
+  admin_connectors:
+    - type: http
+      port: 8081

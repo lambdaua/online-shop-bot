@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.70'
+}
+
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url "https://dl.bintray.com/kotlin/exposed"
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    compile 'io.dropwizard:dropwizard-core:1.3.5'
+    compile 'io.dropwizard:dropwizard-assets:1.3.5'
+
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.4'
+    compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4'
+
+    compile 'org.litote.kmongo:kmongo:3.8.1'
+    compile 'com.vdurmont:emoji-java:4.0.0'
+
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-jackson:2.3.0'
+    compile 'com.squareup.okhttp3:okhttp:3.10.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+
+
+    compile "org.telegram:telegrambotsextensions:3.6"
+
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+}
+
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
